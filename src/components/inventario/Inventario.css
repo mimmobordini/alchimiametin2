@@ -1,0 +1,38 @@
+.containerInventario {
+  position: relative;
+  margin:10px;
+  width: 283px;
+  height: 520px;
+  border-radius: 10px;  
+}
+
+.sourceInventario {
+  position: absolute;
+  width: 283px;
+  height: 520px;
+}
+
+.sourceTab {
+  position: absolute;
+  top: 276px;
+  width: 276px;
+  height: 212px;
+  left: 3px;
+}
+
+.tabButtons{
+  position: absolute; 
+  top: 280px;
+  width: 236px;
+  height: 25px;
+  left: 10px; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttonTab{
+  position: relative; 
+  width: 35px;
+  height: 25px;
+}

@@ -1,0 +1,87 @@
+TIPO = [Diamante, Rubino, Giada, Zaffiro, Granato, Onice]
+CLASSE = [Grezzo, Tagliato, Raro, Antico, Leggendario, Mitico]
+LIVELLO = [0, 1, 2, 3, 4]
+GRADO = [Opaco, Chiaro, Limpido, Brillante, Eccellente]
+
+/************************************************************************************************/
+//ESEMPIO PEZZO DI ALCHIMIA
+{
+	"tipo": "Granato",			//FILTRO TIPO
+	"classe" : "Mitico"			//FILTRO CLASSE
+	"attributi":{
+		"livello" : 4			//ATTRIBUTO LIVELLO
+		"grado" : "eccellente"	//ATTRIBUTO GRADO
+	} 
+}
+
+/************************************************************************************************/
+//ESEMPIO INVENTARIO		//LUNGHEZZA ARRAY: 36 ( grid di 4 file da 8)
+{
+	"Diamante":{
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]	
+	},
+	"Rubino":{
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]
+	},
+	"Giada": {
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]
+	},
+	"Zaffiro":{
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]	
+	},
+	"Granato":{
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]
+	},
+	"Onice":{
+		"Grezzo":[],
+		"Tagliato":[],
+		"Raro":[],
+		"Antico":[],
+		"Leggendario":[],
+		"Mitico":[]
+	}
+}
+
+/************************************************************************************************/
+//ESEMPIO APERTURA COR
+
+1)L'utente inserisce il numero di cor (ESEMPIO 200 COR)
+2)vengono generati cor random GREZZI (quindi tutti di default, ma con solo la chiave "tipo" casuale)
+3)viene popolato l'inventario
+
+/************************************************************************************************/
+//ESEMPIO UP CLASSE
+
+1)l'utente seleziona due cor della stessa classe (quindi controllo campo "classe")
+2)in base al valore delle percentuali di casualità:     (quindi le percentuali sono da mettere fisse o variabili dall'utente?)
+	3.1)RIUSCITA: vengono eliminati i cor
+	3.2)ne viene creato uno di default ma con la chiave "grado" di un grado superiore
+	3.3)e viene aggiunto all'inventario
+	
+	3.1)FALLIMENTO: il secondo cor viene eliminato   (cancellare l'oggetto nell'array? boh)
+	

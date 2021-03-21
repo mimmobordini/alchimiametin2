@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  background-color: #1f0e02;
+  padding: 0 10px;
+
+
+
+  color: #f0d9a2;
+  font-family: 'Quattrocento','Trebuchet MS','FiraSans','Linux Libertine','Times New Roman',serif;
+  font-size: 1.75em
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  /*
+  margin: 0;
+  padding: 0;
+  */
+}

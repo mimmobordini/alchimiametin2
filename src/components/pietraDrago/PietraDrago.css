@@ -1,0 +1,11 @@
+.pietraDrago {
+  height: 30px;
+  width: 30px;
+}
+
+
+.containerPietraDrago{
+   display: flex;
+   border-radius: 8px;
+}
+ 

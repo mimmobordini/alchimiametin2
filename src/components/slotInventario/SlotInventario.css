@@ -1,0 +1,43 @@
+.sourceTabClasse {
+  position: absolute;
+  top: 329px;
+  width: 270px; 
+  left: 3px;
+}
+
+
+
+.tabTipo{ 
+  position: absolute; 
+  top: 330px;
+  width: 260px; 
+  height: 19px;
+  left: 12px; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttonTipo{ 
+  position: relative; 
+  width: 39px;
+  height: 20px;
+}
+
+
+
+.singoloSlotInventario { 
+  position: absolute; 
+  top: 354px;
+  left: 14px;
+  width: 254px;
+  height: 127px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: row;
+}
+
+.classePietra {
+  height: 19px;
+} 

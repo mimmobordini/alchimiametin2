@@ -1,0 +1,19 @@
+.containerMiglioramenti {
+  position: relative;
+  margin: 10px;
+  width: 283px;
+  height: 228px;
+  border-radius: 10px;
+}
+
+.sourceMiglioramenti {
+  position: absolute;
+  width: 283px;
+  height: 520px;
+}
+
+.sourceTabMiglioramenti {
+  position: absolute;
+  top: 139px;
+  left: 4px;
+}
