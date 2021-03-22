@@ -17,3 +17,48 @@
   top: 139px;
   left: 4px;
 }
+
+.containerTabMiglioramenti {
+  position: absolute;
+  width: 238px;
+  height: 20px;
+  top: 148px;
+  left: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.containerTabButton {
+  width: 100%;
+}
+
+.containerMiglioramentiGrid {
+  position: absolute;
+  top: 38px;
+  left: 14px;
+  width: 64px;
+  height: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-auto-flow: row;
+}
+
+.pietraDrago {
+  height: 30px;
+  width: 30px;
+}
+
+.containerPietraDrago {
+  display: flex;
+  border-radius: 8px;
+}
+
+.buttonRaffinamento {
+  position: absolute;
+  top: 199px;
+  left: 187px;
+  width: 85px;
+  height: 18px;
+}

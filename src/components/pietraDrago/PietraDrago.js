@@ -1,13 +1,21 @@
 import "./PietraDrago.css";
 import { useState, useEffect } from "react";
 
-const PietraDrago = ({ pietraDrago, inventario, setInventario, index, checkSelezionati }) => {
-  const [counter, setCounter] = useState(0);
+const PietraDrago = ({
+  pietraDrago,
+  inventario,
+  setInventario,
+  index,
+  checkSelezionati,
+  popolaGridMiglioramenti,
+  showPopup,
+}) => {
+  const [, setCounter] = useState(0);
 
   useEffect(() => {
     setCounter((prev) => prev + 1);
-    console.log("AGGIORNATA PIETRA DRAGO");
-  }, [inventario]);
+    //console.log("AGGIORNATA PIETRA DRAGO");
+  }, [inventario, showPopup]);
 
   const handleSelected = function () {
     var controlloSelezionati = checkSelezionati(pietraDrago.tipo, pietraDrago.classe);
@@ -26,6 +34,7 @@ const PietraDrago = ({ pietraDrago, inventario, setInventario, index, checkSelez
       ]["classe"][pietraDrago.classe][index]["attributi"]["selected"];
       return { ...prevState };
     });
+    popolaGridMiglioramenti();
   };
 
   return (

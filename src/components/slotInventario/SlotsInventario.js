@@ -8,6 +8,8 @@ const SlotsInventario = ({
   showClasse,
   setShowClasse,
   checkSelezionati,
+  popolaGridMiglioramenti,
+  showPopup,
 }) => {
   return (
     <div>
@@ -27,7 +29,9 @@ const SlotsInventario = ({
                 setInventario={setInventario}
                 listaPezzi={tipoInventario[key]}
                 checkSelezionati={checkSelezionati}
+                popolaGridMiglioramenti={popolaGridMiglioramenti}
                 inventario={inventario}
+                showPopup={showPopup}
               />
             </div>
           )

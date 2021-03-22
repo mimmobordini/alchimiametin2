@@ -3,9 +3,26 @@ import SlotsInventario from "../slotInventario/SlotsInventario";
 import { useState } from "react";
 import sourceInventario from "../../resources/Inventario.png";
 
-const Inventario = ({ inventario, checkSelezionati, setInventario }) => {
+const Inventario = ({
+  inventario,
+  checkSelezionati,
+  setInventario,
+  deselectAll,
+  popolaGridMiglioramenti,
+  showPopup,
+}) => {
   const [showTipo, setShowTipo] = useState("Diamante");
   const [showClasse, setShowClasse] = useState("Grezzo");
+
+  const handleTipo = function (tipo) {
+    setShowTipo(tipo);
+    deselectAll();
+  };
+
+  const handleClasse = function (classe) {
+    setShowClasse(classe);
+    deselectAll();
+  };
 
   return (
     <div className="containerInventario shadow">
@@ -17,16 +34,18 @@ const Inventario = ({ inventario, checkSelezionati, setInventario }) => {
               <img className="sourceTab" src={`/Tab/${key}.png`} alt={`/Tab/${key}.png`} />
               <div className="tabButtons">
                 {Object.keys(inventario).map(function (key, index) {
-                  return <div key={index} className="buttonTab" onClick={() => setShowTipo(key)} />;
+                  return <div key={index} className="buttonTab" onClick={() => handleTipo(key)} />;
                 })}
               </div>
               <SlotsInventario
                 tipoInventario={inventario[key]["classe"]}
                 showClasse={showClasse}
-                setShowClasse={setShowClasse}
+                setShowClasse={handleClasse}
                 setInventario={setInventario}
                 checkSelezionati={checkSelezionati}
+                popolaGridMiglioramenti={popolaGridMiglioramenti}
                 inventario={inventario}
+                showPopup={showPopup}
               />
             </div>
           )

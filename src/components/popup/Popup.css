@@ -1,0 +1,24 @@
+.containerPopup {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  position: relative;
+  width: 250px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: small;
+}
+
+.conferma {
+  width: 50%;
+}

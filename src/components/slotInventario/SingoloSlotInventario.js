@@ -1,6 +1,13 @@
 import PietraDrago from "../pietraDrago/PietraDrago";
 
-const SingoloSlotInventario = ({ listaPezzi, inventario, setInventario, checkSelezionati }) => {
+const SingoloSlotInventario = ({
+  listaPezzi,
+  inventario,
+  setInventario,
+  checkSelezionati,
+  popolaGridMiglioramenti,
+  showPopup,
+}) => {
   return (
     <div className="singoloSlotInventario">
       {listaPezzi.map(function (key, index) {
@@ -12,6 +19,8 @@ const SingoloSlotInventario = ({ listaPezzi, inventario, setInventario, checkSel
             pietraDrago={key}
             index={index}
             checkSelezionati={checkSelezionati}
+            popolaGridMiglioramenti={popolaGridMiglioramenti}
+            showPopup={showPopup}
           />
         );
       })}

@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Generatore from "./components/generatore/Generatore";
 import Percentuali from "./components/percentuali/Percentuali";
 import Miglioramenti from "./components/miglioramenti/Miglioramenti";
+import Popup from "./components/popup/Popup";
 
 const listaElementi = ["Diamante", "Rubino", "Giada", "Zaffiro", "Granato", "Onice"];
 
@@ -71,18 +72,39 @@ const defaultPercentuali = {
 };
 
 function App() {
-  const [showInventario, setShowInventario] = useState(true);
   const [showGeneratore, setShowGeneratore] = useState(true);
-  const [showPercentuali, setShowPercentuali] = useState(true);
-  const [showMiglioramenti, setShowMiglioramenti] = useState(true);
+  const [gridPietre, setGridPietre] = useState([]);
   const [inventario, setInventario] = useState(() => creaInventario());
   const [percentuali, setPercentuali] = useState(defaultPercentuali);
 
-  useEffect(() => {
-    console.log("USE EFFECT APP");
-  }, [inventario]);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
 
-  //console.log(inventario);
+  useEffect(() => {
+    //console.log("USE EFFECT APP");
+  }, [inventario, showPopup]);
+
+  const popolaGridMiglioramenti = function () {
+    var newGrid = [];
+
+    for (var i = 0; i < Object.keys(inventario).length; i++) {
+      var elemento = Object.keys(inventario)[i]; //DIAMANTE
+
+      for (var j = 0; j < Object.keys(inventario[elemento]["classe"]).length; j++) {
+        var tipo = Object.keys(inventario[elemento]["classe"])[j]; //GREZZO
+
+        if (inventario[elemento]["classe"][tipo].length !== 0) {
+          inventario[elemento]["classe"][tipo].forEach((element) => {
+            if (element["attributi"]["selected"]) {
+              newGrid.push(element);
+            }
+          });
+        }
+      }
+    }
+
+    setGridPietre(newGrid); //DA SISTEMARE NON FUNZiONA
+  };
 
   const checkSelezionati = function (tipo, classe) {
     const result = inventario[tipo]["classe"][classe].reduce((accumulator, current) => {
@@ -119,24 +141,35 @@ function App() {
       return { ...prevState };
     });
 
-    console.log("usato il nuovo set inventario");
+    setGridPietre([]);
+  };
+
+  const openPopup = function (message) {
+    setPopupMessage(message);
+    setShowPopup((prev) => !prev);
   };
 
   return (
     <div className="app unselectable">
-      <Navbar
-        setShowInventario={setShowInventario}
-        setShowGeneratore={setShowGeneratore}
-        setShowPercentuali={setShowPercentuali}
-        setShowMiglioramenti={setShowMiglioramenti}
-      />
+      <Navbar setShowGeneratore={setShowGeneratore} />
       <div className="containerAll">
-        {showInventario && (
-          <Inventario checkSelezionati={checkSelezionati} setInventario={setInventario} inventario={inventario} />
-        )}
+        <Inventario
+          checkSelezionati={checkSelezionati}
+          setInventario={setInventario}
+          inventario={inventario}
+          deselectAll={deselectAll}
+          popolaGridMiglioramenti={popolaGridMiglioramenti}
+          showPopup={showPopup}
+        />
         <div>
-          {showMiglioramenti && <Miglioramenti />}
-          {showPercentuali && <Percentuali percentuali={percentuali} setPercentuali={setPercentuali} />}
+          <Miglioramenti
+            deselectAll={deselectAll}
+            gridPietre={gridPietre}
+            setGridPietre={setGridPietre}
+            openPopup={openPopup}
+            percentuali={percentuali}
+          />
+          <Percentuali percentuali={percentuali} setPercentuali={setPercentuali} />
         </div>
         {showGeneratore && (
           <Generatore
@@ -146,6 +179,7 @@ function App() {
             setShowGeneratore={setShowGeneratore}
           />
         )}
+        {showPopup && <Popup setShowPopup={setShowPopup} popupMessage={popupMessage} />}
       </div>
     </div>
   );

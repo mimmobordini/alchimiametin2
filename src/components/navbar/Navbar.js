@@ -1,38 +1,16 @@
 import "./Navbar.css";
 
-const Navbar = ({ setShowInventario, setShowGeneratore, setShowPercentuali, setShowMiglioramenti }) => {
+const Navbar = ({ setShowGeneratore }) => {
   return (
     <nav className="navbar">
-      <div>
-        <span>Alchimia Metin2</span>
-      </div>
+      <span className="logo">Alchimia Metin2</span>
       <ul>
         <li>
           <input
             type="button"
-            value="mostra/nascondi Inventario"
-            onClick={setShowInventario.bind(this, (prevState) => !prevState)}
-          />
-        </li>
-        <li>
-          <input
-            type="button"
-            value="mostra/nascondi Generatore"
+            className="navbarTabButton"
+            value="Generatore"
             onClick={setShowGeneratore.bind(this, (prevState) => !prevState)}
-          />
-        </li>
-        <li>
-          <input
-            type="button"
-            value="mostra/nascondi Percentuali"
-            onClick={setShowPercentuali.bind(this, (prevState) => !prevState)}
-          />
-        </li>
-        <li>
-          <input
-            type="button"
-            value="mostra/nascondi Miglioramenti"
-            onClick={setShowMiglioramenti.bind(this, (prevState) => !prevState)}
           />
         </li>
       </ul>
