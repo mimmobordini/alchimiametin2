@@ -32,7 +32,7 @@ const randomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const generaCor = function (tipo = "Diamante", classe = "Grezzo", livello = 0, grado = "Opaco") {
+const generaPietra = function (tipo = "Diamante", classe = "Grezzo", livello = 0, grado = "Opaco") {
   var elemento = {
     tipo: tipo,
     classe: classe,
@@ -48,7 +48,7 @@ const generaCor = function (tipo = "Diamante", classe = "Grezzo", livello = 0, g
 const caricaInventario = function (inventario, numeroCor) {
   for (var i = 0; i < numeroCor; i++) {
     var estratto = listaElementi[randomInRange(0, 5)];
-    var elemento = generaCor(estratto, "Grezzo", 0, "Opaco");
+    var elemento = generaPietra(estratto, "Grezzo", 0, "Opaco");
 
     if (inventario[estratto]["classe"]["Grezzo"].length < 32) {
       inventario[estratto]["classe"]["Grezzo"].push(elemento);
@@ -120,9 +120,7 @@ function App() {
     return result;
   };
 
-  const deselectAll = function () {
-    //delete tempInventario["Diamante"]["classe"]["Grezzo"][0]; //TEST
-
+  const deselectAll = function (flagDelete = false, risultatoRaffinamento = false) {
     setInventario((prevState) => {
       for (var i = 0; i < Object.keys(prevState).length; i++) {
         var elemento = Object.keys(prevState)[i]; //DIAMANTE
@@ -131,7 +129,22 @@ function App() {
           var tipo = Object.keys(prevState[elemento]["classe"])[j]; //GREZZO
 
           if (prevState[elemento]["classe"][tipo].length !== 0) {
-            prevState[elemento]["classe"][tipo].forEach((element) => {
+            var flagSkip = false;
+
+            prevState[elemento]["classe"][tipo].forEach((element, index) => {
+              if (element["attributi"]["selected"] === true) {
+                if (flagDelete) {
+                  if (!flagSkip) {
+                    //CANCELLO ENTRAMBI I COR PERCHE HA RAFFINATO E NON DEVE SKIPPARE
+                    delete prevState[elemento]["classe"][tipo][index];
+                    console.log("cancellato");
+                    if (!risultatoRaffinamento) {
+                      flagSkip = true;
+                    }
+                  }
+                }
+              }
+
               element["attributi"]["selected"] = false;
             });
           }
@@ -142,6 +155,18 @@ function App() {
     });
 
     setGridPietre([]);
+  };
+
+  const aggiungiPietra = function (tipo, classe, grado, livello) {
+    var pietra = generaPietra(tipo, classe, livello, grado);
+
+    setInventario((prevState) => {
+      console.log(prevState[tipo]["classe"][classe]);
+      //NE AGGIUNGE DUE CRISTODDIO
+      prevState[tipo]["classe"][classe] = [...prevState[tipo]["classe"][classe], pietra];
+
+      return { ...prevState };
+    });
   };
 
   const openPopup = function (message) {
@@ -168,6 +193,7 @@ function App() {
             setGridPietre={setGridPietre}
             openPopup={openPopup}
             percentuali={percentuali}
+            aggiungiPietra={aggiungiPietra}
           />
           <Percentuali percentuali={percentuali} setPercentuali={setPercentuali} />
         </div>

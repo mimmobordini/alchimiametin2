@@ -14,7 +14,7 @@ const menu = {
   livello: tabLivello,
 };
 
-const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, percentuali }) => {
+const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, percentuali, aggiungiPietra }) => {
   const [tabScelta, setTabScelta] = useState("classe");
 
   const get_result = function (scelta) {
@@ -78,8 +78,13 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
       case "classe":
         if (get_result(gridPietre[0]["classe"])) {
           openPopup("riuscito"); //NO APRIRE POPUP
+          deselectAll(true, true);
+
+          aggiungiPietra("Diamante", "Mitico", "Eccellente", 0); //TESTING
+          console.log("asd");
         } else {
           openPopup("fallito"); //NO APRIRE POPUP
+          deselectAll(true, false);
         }
 
         break;
@@ -91,8 +96,10 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
 
         if (get_result(gridPietre[0]["attributi"]["grado"])) {
           openPopup("riuscito"); //NO APRIRE POPUP
+          deselectAll(true, true);
         } else {
           openPopup("fallito"); //NO APRIRE POPUP
+          deselectAll(true, false);
         }
 
         break;
