@@ -1,5 +1,8 @@
 import "./App.css";
+
 import { useState, useEffect } from "react";
+
+//COMPONENTS
 import Inventario from "./components/inventario/Inventario";
 import Navbar from "./components/navbar/Navbar";
 import Generatore from "./components/generatore/Generatore";
@@ -7,69 +10,10 @@ import Percentuali from "./components/percentuali/Percentuali";
 import Miglioramenti from "./components/miglioramenti/Miglioramenti";
 import Popup from "./components/popup/Popup";
 
-const listaElementi = ["Diamante", "Rubino", "Giada", "Zaffiro", "Granato", "Onice"];
+//FUNZIONI E VARIABILI A SUPPORTO
+import { creaInventario, defaultPercentuali, generaPietra, caricaInventario } from "./components/altro/altro";
 
-const creaInventario = function () {
-  var inventario = {};
-
-  for (var i = 0; i < listaElementi.length; i++) {
-    inventario[listaElementi[i]] = {
-      classe: {
-        Grezzo: [],
-        Tagliato: [],
-        Raro: [],
-        Antico: [],
-        Leggendario: [],
-        Mitico: [],
-      },
-    };
-  }
-
-  return inventario;
-};
-
-const randomInRange = function (min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
-const generaPietra = function (tipo = "Diamante", classe = "Grezzo", livello = 0, grado = "Opaco") {
-  var elemento = {
-    tipo: tipo,
-    classe: classe,
-    attributi: {
-      livello: livello,
-      grado: grado,
-      selected: false,
-    },
-  };
-  return elemento;
-};
-
-const caricaInventario = function (inventario, numeroCor) {
-  for (var i = 0; i < numeroCor; i++) {
-    var estratto = listaElementi[randomInRange(0, 5)];
-    var elemento = generaPietra(estratto, "Grezzo", 0, "Opaco");
-
-    if (inventario[estratto]["classe"]["Grezzo"].length < 32) {
-      inventario[estratto]["classe"]["Grezzo"].push(elemento);
-    }
-  }
-
-  return inventario;
-};
-
-const defaultPercentuali = {
-  Grezzo_a_Tagliato: 50,
-  Tagliato_a_Raro: 49,
-  Raro_a_Antico: 48,
-  Antico_a_Leggendario: 47,
-  Leggenario_a_Mitico: 46,
-  /************************/
-  Opaco_a_Chiaro: 45,
-  Chiaro_a_Limpido: 44,
-  Limpido_a_Brillante: 43,
-  Brillante_a_Eccellente: 42,
-};
+/************************************************************************************************************/
 
 function App() {
   const [showGeneratore, setShowGeneratore] = useState(true);
@@ -103,7 +47,7 @@ function App() {
       }
     }
 
-    setGridPietre(newGrid); //DA SISTEMARE NON FUNZiONA
+    setGridPietre(newGrid);
   };
 
   const checkSelezionati = function (tipo, classe) {
@@ -160,10 +104,11 @@ function App() {
   const aggiungiPietra = function (tipo, classe, grado, livello) {
     var pietra = generaPietra(tipo, classe, livello, grado);
 
+    let newArray = [...inventario[tipo]["classe"][classe]];
+    newArray.push(pietra);
+
     setInventario((prevState) => {
-      console.log(prevState[tipo]["classe"][classe]);
-      //NE AGGIUNGE DUE CRISTODDIO
-      prevState[tipo]["classe"][classe] = [...prevState[tipo]["classe"][classe], pietra];
+      prevState[tipo]["classe"][classe] = newArray;
 
       return { ...prevState };
     });

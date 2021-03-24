@@ -1,5 +1,6 @@
 import "./PietraDrago.css";
 import { useState, useEffect } from "react";
+import { sourceMapIcona } from "../altro/sources";
 
 const PietraDrago = ({
   pietraDrago,
@@ -45,8 +46,8 @@ const PietraDrago = ({
     >
       <img
         className="pietraDrago octagon"
-        src={`/${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
-        alt={`/${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
+        src={sourceMapIcona[`Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}`]}
+        alt={`${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
       />
     </div>
   );

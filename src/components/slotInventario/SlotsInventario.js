@@ -1,5 +1,6 @@
 import SingoloSlotInventario from "./SingoloSlotInventario";
 import "./SlotInventario.css";
+import { sourceMapClasse } from "../altro/sources";
 
 const SlotsInventario = ({
   tipoInventario,
@@ -17,7 +18,7 @@ const SlotsInventario = ({
         return (
           key === showClasse && (
             <div key={index}>
-              <img className="sourceTabClasse" src={`/Tab/${key}.png`} alt={`/Tab/${key}.png`} />
+              <img className="sourceTabClasse" src={sourceMapClasse[key]} alt={`${key}.png`} />
 
               <div className="tabTipo">
                 {Object.keys(tipoInventario).map(function (key, index) {

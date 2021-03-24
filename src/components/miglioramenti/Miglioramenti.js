@@ -1,18 +1,6 @@
 import "./Miglioramenti.css";
 import { useState } from "react";
-import sourceRaffinamento from "../../resources/Raffinamento.png";
-
-import tabClasse from "../../resources/tabClasse.png";
-import tabGrado from "../../resources/tabGrado.png";
-import tabLivello from "../../resources/tabLivello.png";
-
-//classe grado   da gestire livello
-
-const menu = {
-  classe: tabClasse,
-  grado: tabGrado,
-  livello: tabLivello,
-};
+import { menuRaffinamento, sourceRaffinamento, sourceMapIcona } from "../altro/sources";
 
 const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, percentuali, aggiungiPietra }) => {
   const [tabScelta, setTabScelta] = useState("classe");
@@ -114,9 +102,9 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
   return (
     <div className="containerMiglioramenti shadow">
       <img className="sourceRaffinamento" src={sourceRaffinamento} alt={`Raffinamento.png`} />
-      <img className="sourceTabMiglioramenti" src={menu[tabScelta]} alt={tabScelta} />
+      <img className="sourceTabMiglioramenti" src={menuRaffinamento[tabScelta]} alt={tabScelta} />
       <div className="containerTabMiglioramenti">
-        {Object.keys(menu).map(function (key, index) {
+        {Object.keys(menuRaffinamento).map(function (key, index) {
           return <div className="containerTabButton" key={index} onClick={() => handleCambiaTab(key)} />;
         })}
       </div>
@@ -127,8 +115,8 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
             <div key={index} className="containerPietraDrago">
               <img
                 className="pietraDrago octagon"
-                src={`/${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
-                alt={`/${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
+                src={sourceMapIcona[`Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}`]}
+                alt={`${pietraDrago.tipo}/Icona_${pietraDrago.tipo}_${pietraDrago.classe}_${pietraDrago.attributi.grado}.png`}
               />
             </div>
           );

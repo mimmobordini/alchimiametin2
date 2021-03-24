@@ -1,7 +1,7 @@
 import "./Inventario.css";
 import SlotsInventario from "../slotInventario/SlotsInventario";
 import { useState } from "react";
-import sourceInventario from "../../resources/Inventario.png";
+import { sourceInventario, sourceMapTipo } from "../altro/sources";
 
 const Inventario = ({
   inventario,
@@ -31,7 +31,7 @@ const Inventario = ({
         return (
           key === showTipo && (
             <div key={index}>
-              <img className="sourceTab" src={`/Tab/${key}.png`} alt={`/Tab/${key}.png`} />
+              <img className="sourceTab" src={sourceMapTipo[key]} alt={`${key}.png`} />
               <div className="tabButtons">
                 {Object.keys(inventario).map(function (key, index) {
                   return <div key={index} className="buttonTab" onClick={() => handleTipo(key)} />;

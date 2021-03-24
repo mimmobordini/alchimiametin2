@@ -1,6 +1,6 @@
 import "./Generatore.css";
 import { useState } from "react";
-import cor from "../../resources/Cor.png";
+import { cor } from "../altro/sources";
 
 const Generatore = ({ inventario, setInventario, setShowGeneratore, caricaInventario }) => {
   const [input, setInput] = useState("40");
@@ -33,4 +33,5 @@ const Generatore = ({ inventario, setInventario, setShowGeneratore, caricaInvent
     </div>
   );
 };
+
 export default Generatore;
