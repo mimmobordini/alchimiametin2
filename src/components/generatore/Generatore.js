@@ -3,7 +3,7 @@ import { useState } from "react";
 import { cor } from "../altro/sources";
 
 const Generatore = ({ inventario, setInventario, setShowGeneratore, caricaInventario }) => {
-  const [input, setInput] = useState("40");
+  const [input, setInput] = useState("400");
 
   const updateInventario = function () {
     if (input === "0") return;

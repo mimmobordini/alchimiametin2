@@ -1,10 +1,26 @@
 import "./Miglioramenti.css";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { menuRaffinamento, sourceRaffinamento, sourceMapIcona } from "../altro/sources";
 import { classe, livello, grado } from "../altro/altro";
 
 const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, percentuali, aggiungiPietra }) => {
   const [tabScelta, setTabScelta] = useState("classe");
+
+  const handleUserKeyPress = useCallback((event) => {
+    const { keyCode } = event;
+
+    if (keyCode === 13) {
+      handleMigliora();
+    }
+  });
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleUserKeyPress);
+    };
+  }, [handleUserKeyPress]);
 
   const get_result = function (scelta) {
     var result;
@@ -15,8 +31,6 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
       if (element.startsWith(scelta)) {
         var filtro = parseInt(percentuali[element]);
         var random = Math.floor(Math.random() * 100);
-
-        //console.log(random, filtro);
 
         if (random < filtro) {
           result = true;
@@ -61,6 +75,7 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
   };
 
   const handleMigliora = function () {
+    // console.log(gridPietre);
     if (!controllaStatus()) return;
 
     switch (tabScelta) {
@@ -89,7 +104,7 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
 
           console.log(gridPietre[0]["tipo"], gridPietre[0]["classe"], grado[indexGrado + 1]);
 
-          //aggiungiPietra(gridPietre[0]["tipo"], gridPietre[0]["classe"], grado[indexGrado + 1], 0); //NON VA DA INDAGARE
+          aggiungiPietra(gridPietre[0]["tipo"], gridPietre[0]["classe"], grado[indexGrado + 1], 0); //NON VA DA INDAGARE
         } else {
           deselectAll(true, false);
         }

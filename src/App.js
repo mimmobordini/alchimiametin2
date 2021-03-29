@@ -76,13 +76,15 @@ function App() {
             var flagSkip = false;
 
             prevState[elemento]["classe"][tipo].forEach((element, index) => {
-              console.log(element);
+              // console.log(element);
               if (element["attributi"]["selected"] === true) {
                 if (flagDelete) {
                   if (!flagSkip) {
                     //CANCELLO ENTRAMBI I COR PERCHE HA RAFFINATO E NON DEVE SKIPPARE
+
+                    //prevState[elemento]["classe"][tipo].splice(index, index + 1);
                     delete prevState[elemento]["classe"][tipo][index];
-                    console.log("cancellato");
+                    // console.log("cancellato");
                     if (!risultatoRaffinamento) {
                       flagSkip = true;
                     }
@@ -91,6 +93,10 @@ function App() {
               }
 
               element["attributi"]["selected"] = false;
+            });
+
+            prevState[elemento]["classe"][tipo] = prevState[elemento]["classe"][tipo].filter(function () {
+              return true;
             });
           }
         }
@@ -104,7 +110,6 @@ function App() {
 
   const aggiungiPietra = function (tipo, classe, grado, livello) {
     var pietra = generaPietra(tipo, classe, livello, grado);
-    console.log(pietra);
     let newArray = [...inventario[tipo]["classe"][classe]];
     newArray.push(pietra);
 
