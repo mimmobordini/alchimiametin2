@@ -23,6 +23,10 @@ const Percentuali = ({ percentuali, setPercentuali }) => {
                 value={percentuali[key]}
                 className="inputQuantita"
                 onInput={(e) => handleChange(key, e.target.value)}
+                onBlur={(e) => {
+                  if (e.target.value > 100) handleChange(key, 100);
+                  if (e.target.value < 0) handleChange(key, 0);
+                }}
               />
               %
             </span>

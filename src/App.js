@@ -128,26 +128,8 @@ function App() {
   return (
     <div className="app unselectable">
       <Navbar setShowGeneratore={setShowGeneratore} />
+
       <div className="containerAll">
-        <Inventario
-          checkSelezionati={checkSelezionati}
-          setInventario={setInventario}
-          inventario={inventario}
-          deselectAll={deselectAll}
-          popolaGridMiglioramenti={popolaGridMiglioramenti}
-          showPopup={showPopup}
-        />
-        <div>
-          <Miglioramenti
-            deselectAll={deselectAll}
-            gridPietre={gridPietre}
-            setGridPietre={setGridPietre}
-            openPopup={openPopup}
-            percentuali={percentuali}
-            aggiungiPietra={aggiungiPietra}
-          />
-          <Percentuali percentuali={percentuali} setPercentuali={setPercentuali} />
-        </div>
         {showGeneratore && (
           <Generatore
             inventario={inventario}
@@ -155,6 +137,29 @@ function App() {
             setInventario={setInventario}
             setShowGeneratore={setShowGeneratore}
           />
+        )}
+        {!showGeneratore && (
+          <div className="containerRow">
+            <Inventario
+              checkSelezionati={checkSelezionati}
+              setInventario={setInventario}
+              inventario={inventario}
+              deselectAll={deselectAll}
+              popolaGridMiglioramenti={popolaGridMiglioramenti}
+              showPopup={showPopup}
+            />
+            <div>
+              <Miglioramenti
+                deselectAll={deselectAll}
+                gridPietre={gridPietre}
+                setGridPietre={setGridPietre}
+                openPopup={openPopup}
+                percentuali={percentuali}
+                aggiungiPietra={aggiungiPietra}
+              />
+              <Percentuali percentuali={percentuali} setPercentuali={setPercentuali} />
+            </div>
+          </div>
         )}
         {showPopup && <Popup setShowPopup={setShowPopup} popupMessage={popupMessage} />}
       </div>

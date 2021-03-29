@@ -53,16 +53,16 @@ const caricaInventario = function (inventario, numeroCor) {
 };
 
 const defaultPercentuali = {
-  Grezzo_a_Tagliato: 100,
-  Tagliato_a_Raro: 100,
-  Raro_a_Antico: 100,
-  Antico_a_Leggendario: 100,
-  Leggendario_a_Mitico: 100,
+  Grezzo_a_Tagliato: 50,
+  Tagliato_a_Raro: 50,
+  Raro_a_Antico: 50,
+  Antico_a_Leggendario: 50,
+  Leggendario_a_Mitico: 50,
   /************************/
-  Opaco_a_Chiaro: 100,
-  Chiaro_a_Limpido: 100,
-  Limpido_a_Brillante: 100,
-  Brillante_a_Eccellente: 100,
+  Opaco_a_Chiaro: 50,
+  Chiaro_a_Limpido: 50,
+  Limpido_a_Brillante: 50,
+  Brillante_a_Eccellente: 50,
 };
 
 export { defaultPercentuali, classe, livello, grado, creaInventario, generaPietra, caricaInventario };
