@@ -1,6 +1,7 @@
 import "./Miglioramenti.css";
 import { useState } from "react";
 import { menuRaffinamento, sourceRaffinamento, sourceMapIcona } from "../altro/sources";
+import { classe, livello, grado } from "../altro/altro";
 
 const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, percentuali, aggiungiPietra }) => {
   const [tabScelta, setTabScelta] = useState("classe");
@@ -15,7 +16,7 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
         var filtro = parseInt(percentuali[element]);
         var random = Math.floor(Math.random() * 100);
 
-        console.log(random, filtro);
+        //console.log(random, filtro);
 
         if (random < filtro) {
           result = true;
@@ -65,17 +66,17 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
     switch (tabScelta) {
       case "classe":
         if (get_result(gridPietre[0]["classe"])) {
-          openPopup("riuscito"); //NO APRIRE POPUP
           deselectAll(true, true);
 
-          aggiungiPietra("Diamante", "Mitico", "Eccellente", 0); //TESTING
-          console.log("asd");
+          let indexClasse = classe.indexOf(gridPietre[0]["classe"]);
+
+          aggiungiPietra(gridPietre[0]["tipo"], classe[indexClasse + 1], gridPietre[0]["attributi"]["grado"], 0);
         } else {
-          openPopup("fallito"); //NO APRIRE POPUP
           deselectAll(true, false);
         }
 
         break;
+
       case "grado":
         if (gridPietre[0]["attributi"]["grado"] !== gridPietre[1]["attributi"]["grado"]) {
           openPopup("sono grado diverso coglione");
@@ -83,16 +84,19 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
         }
 
         if (get_result(gridPietre[0]["attributi"]["grado"])) {
-          openPopup("riuscito"); //NO APRIRE POPUP
           deselectAll(true, true);
+          let indexGrado = grado.indexOf(gridPietre[0]["attributi"]["grado"]);
+
+          console.log(gridPietre[0]["tipo"], gridPietre[0]["classe"], grado[indexGrado + 1]);
+
+          //aggiungiPietra(gridPietre[0]["tipo"], gridPietre[0]["classe"], grado[indexGrado + 1], 0); //NON VA DA INDAGARE
         } else {
-          openPopup("fallito"); //NO APRIRE POPUP
           deselectAll(true, false);
         }
 
         break;
+
       case "livello":
-        openPopup("migliora livello TODO");
         break;
       default:
         break;

@@ -65,4 +65,4 @@ const defaultPercentuali = {
   Brillante_a_Eccellente: 42,
 };
 
-export { creaInventario, defaultPercentuali, generaPietra, caricaInventario };
+export { defaultPercentuali, classe, livello, grado, creaInventario, generaPietra, caricaInventario };

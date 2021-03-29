@@ -76,6 +76,7 @@ function App() {
             var flagSkip = false;
 
             prevState[elemento]["classe"][tipo].forEach((element, index) => {
+              console.log(element);
               if (element["attributi"]["selected"] === true) {
                 if (flagDelete) {
                   if (!flagSkip) {
@@ -103,7 +104,7 @@ function App() {
 
   const aggiungiPietra = function (tipo, classe, grado, livello) {
     var pietra = generaPietra(tipo, classe, livello, grado);
-
+    console.log(pietra);
     let newArray = [...inventario[tipo]["classe"][classe]];
     newArray.push(pietra);
 
