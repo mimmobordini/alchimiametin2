@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/alchimiametin2/static/css/main.f64bf3f1.chunk.css",
+    "main.js": "/alchimiametin2/static/js/main.21b188b6.chunk.js",
+    "main.js.map": "/alchimiametin2/static/js/main.21b188b6.chunk.js.map",
+    "runtime-main.js": "/alchimiametin2/static/js/runtime-main.37bac781.js",
+    "runtime-main.js.map": "/alchimiametin2/static/js/runtime-main.37bac781.js.map",
+    "static/js/2.a3ae8ca0.chunk.js": "/alchimiametin2/static/js/2.a3ae8ca0.chunk.js",
+    "static/js/2.a3ae8ca0.chunk.js.map": "/alchimiametin2/static/js/2.a3ae8ca0.chunk.js.map",
+    "index.html": "/alchimiametin2/index.html",
+    "static/css/main.f64bf3f1.chunk.css.map": "/alchimiametin2/static/css/main.f64bf3f1.chunk.css.map",
+    "static/js/2.a3ae8ca0.chunk.js.LICENSE.txt": "/alchimiametin2/static/js/2.a3ae8ca0.chunk.js.LICENSE.txt",
+    "static/media/Diamante.77538735.png": "/alchimiametin2/static/media/Diamante.77538735.png",
+    "static/media/Giada.88ef3968.png": "/alchimiametin2/static/media/Giada.88ef3968.png",
+    "static/media/Granato.0e5f7fc8.png": "/alchimiametin2/static/media/Granato.0e5f7fc8.png",
+    "static/media/Inventario.0945d656.png": "/alchimiametin2/static/media/Inventario.0945d656.png",
+    "static/media/Onice.75bb528a.png": "/alchimiametin2/static/media/Onice.75bb528a.png",
+    "static/media/Raffinamento.7babc65d.png": "/alchimiametin2/static/media/Raffinamento.7babc65d.png",
+    "static/media/Rubino.4913f730.png": "/alchimiametin2/static/media/Rubino.4913f730.png",
+    "static/media/Zaffiro.7b0ad666.png": "/alchimiametin2/static/media/Zaffiro.7b0ad666.png",
+    "static/media/App.css": "/alchimiametin2/static/media/backgroundMain.1569aeea.png",
+    "static/media/tabClasse.4a9bb98e.png": "/alchimiametin2/static/media/tabClasse.4a9bb98e.png",
+    "static/media/tabGrado.bdaaba35.png": "/alchimiametin2/static/media/tabGrado.bdaaba35.png",
+    "static/media/tabLivello.592eaecf.png": "/alchimiametin2/static/media/tabLivello.592eaecf.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.37bac781.js",
+    "static/js/2.a3ae8ca0.chunk.js",
+    "static/css/main.f64bf3f1.chunk.css",
+    "static/js/main.21b188b6.chunk.js"
+  ]
+}
