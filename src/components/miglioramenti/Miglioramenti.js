@@ -50,24 +50,24 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
     deselectAll();
   };
 
-  const controllaStatus = function () {
+  const controllaStatus = function (tabScelta) {
     if (gridPietre.length !== 2) {
-      openPopup("coglione mettici le pietre");
+      openPopup("inserisci le pietre");
       return false;
     }
 
-    if (gridPietre[0]["classe"] === "Mitico" || gridPietre[1]["classe"] === "Mitico") {
-      openPopup("sono mitici coglione, hai finito");
+    if (tabScelta === "classe" && (gridPietre[0]["classe"] === "Mitico" || gridPietre[1]["classe"] === "Mitico")) {
+      openPopup("sono mitici, hai finito");
       return false;
     }
 
     if (gridPietre[0]["attributi"]["grado"] === "Eccellente" || gridPietre[1]["attributi"]["grado"] === "Eccellente") {
-      openPopup("sono eccellenti coglione, hai finito");
+      openPopup("sono eccellenti, hai finito");
       return false;
     }
 
     if (gridPietre[0]["attributi"]["livello"] === 4 || gridPietre[1]["attributi"]["livello"] === 4) {
-      openPopup("sono livello 4 coglione, hai finito");
+      openPopup("sono livello 4, hai finito");
       return false;
     }
 
@@ -76,7 +76,7 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
 
   const handleMigliora = function () {
     // console.log(gridPietre);
-    if (!controllaStatus()) return;
+    if (!controllaStatus(tabScelta)) return;
 
     switch (tabScelta) {
       case "classe":
@@ -94,7 +94,7 @@ const Miglioramenti = ({ deselectAll, gridPietre, setGridPietre, openPopup, perc
 
       case "grado":
         if (gridPietre[0]["attributi"]["grado"] !== gridPietre[1]["attributi"]["grado"]) {
-          openPopup("sono grado diverso coglione");
+          openPopup("sono grado diverso ");
           return;
         }
 
